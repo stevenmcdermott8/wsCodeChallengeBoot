@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "670846e8-486a-48eb-afe9-54f473f1ff98",
+		"name": "WsChallenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET with QueryParameter by pipe delimited list - Example",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/wsChallenge/zipRange?zipCodeRanges=10000,20000|50000,60000|11111,11112",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"wsChallenge",
+						"zipRange"
+					],
+					"query": [
+						{
+							"key": "zipCodeRanges",
+							"value": "10000,20000|50000,60000|11111,11112"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET with Path Paremeter by pipe delimited list - Example",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/wsChallenge/zipRange/10000,20000|50000,60000|11111,11112",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"wsChallenge",
+						"zipRange",
+						"10000,20000|50000,60000|11111,11112"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST with  JSON list - Example",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"zipCodeRanges\": [\n        {\n            \"zipRange\": [\n                \"29999\",\n                \"40000\"\n            ]\n        },\n        {\n            \"zipRange\": [\n                \"10000\",\n                \"50000\"\n            ]\n        },\n        {\n            \"zipRange\": [\n                \"20000\",\n                \"30000\"\n            ]\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/wsChallenge/zipRange",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"wsChallenge",
+						"zipRange"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

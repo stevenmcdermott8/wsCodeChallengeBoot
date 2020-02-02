@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: wsChallenge
+server:
+  servlet:
+    contextPath: /${spring.application.name}
