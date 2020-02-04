@@ -37,6 +37,56 @@ Your work will be evaluated against the following criteria:
 
 # Implementation Information
 Implemented spring boot application
-TODO: add startup script info
 
-Once running, see WsChallenge.postman_collection.json for examples to retrieve zip code ranges via postman.
+Pre requisit: Maven 3.x should be installed, Java JDK 8+ should be installed.
+1. Once repository is cloned, navigate to root directory containing pom.xml file in your terminal.
+2. Run command `mvn clean install`
+3. Run command `java -jar target/ws-code-challenge-boot-0.0.1-SNAPSHOT.jar`
+4. Once running, see WsChallenge.postman_collection.json for examples to retrieve zip code ranges via postman.
+
+There are three endpoints exposed to retrieve zip code ranges:
+
+1. GET with query parameter 
+    - `http://localhost:8080/wsChallenge/zipRange?zipCodeRanges=10000,20000|50000,60000|11111,11112`
+2. GET with path parameter
+    - `http://localhost:8080/wsChallenge/zipRange/10000,20000|50000,60000|11111,11112`
+3. POST with JSON body
+    - `http://localhost:8080/wsChallenge/zipRange`
+    - Example request body:
+    
+    ```json
+    {
+    "zipCodeRanges": [
+        {
+            "zipRange": [
+                "29999",
+                "40000"
+            ]
+        },
+        {
+            "zipRange": [
+                "10000",
+                "50000"
+            ]
+        },
+        {
+            "zipRange": [
+                "20000",
+                "30000"
+            ]
+        }
+      ]
+   }
+
+Example Response for all endpoints:
+```json
+[
+    [
+        "10000",
+        "20000"
+    ],
+    [
+        "50000",
+        "60000"
+    ]
+]
